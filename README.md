@@ -1,72 +1,41 @@
-# Estadística Operativa — versión productiva
+# BOAG Dashboard
 
-Esta versión conserva la interfaz del `index.html` original y la convierte en una aplicación web multiusuario con servidor y base de datos compartida.
+Paquete listo para publicarse desde GitHub hacia Render. La aplicación se conserva como sitio estático y también incluye un servidor Node sin dependencias como alternativa.
 
-## Qué incluye
+## Subir a GitHub
 
-- Inicio de sesión validado en el servidor.
-- Contraseñas cifradas con `scrypt`; ya no aparecen en el HTML.
-- Sesiones mediante cookie `HttpOnly` y `SameSite=Strict`.
-- Base de datos SQLite compartida para registros, catálogos, proyectos y actividad.
-- Permisos por rol: responsable, autorizador, directivo y administrador.
-- Validación de las transiciones del flujo de aprobación en el servidor.
-- Bitácora de accesos y cambios.
-- Respaldos automáticos diarios, conservando los 14 más recientes.
-- Descarga manual de respaldo para el administrador.
-- Migración opcional de registros que todavía existan en `localStorage` del navegador anterior.
-- Dockerfile y configuración para publicar en Render con disco persistente.
+1. Descomprime `BOAG_DASH_GITHUB_RENDER.zip`.
+2. Crea un repositorio nuevo en GitHub.
+3. En **Add file > Upload files**, sube **todos los archivos y carpetas que están dentro** de `BOAG_DASH_GITHUB_RENDER`.
+4. Confirma que en la raíz del repositorio aparezcan `index.html`, `public`, `render.yaml`, `package.json` y `server.js`.
+5. Guarda con **Commit changes**.
 
-## Ejecutar en Windows
+> No subas el ZIP cerrado como único archivo: GitHub no lo descomprime automáticamente.
 
-1. Instala Node.js 22 o superior.
-2. Descomprime la carpeta completa.
-3. Abre `INICIAR_APP_WINDOWS.bat`.
-4. La aplicación se abrirá en `http://localhost:3000`.
+## Publicar en Render — recomendado
 
-También puedes abrir una terminal dentro de la carpeta y ejecutar:
+1. En Render selecciona **New > Blueprint**.
+2. Conecta el repositorio de GitHub.
+3. Render detectará `render.yaml` y creará el sitio estático `boag-dashboard`.
+4. Pulsa **Apply**. La carpeta publicada será `public`.
 
-```bash
-npm start
-```
+## Publicar manualmente como Static Site
 
-No necesita instalar paquetes adicionales.
+- Build Command: `bash build.sh`
+- Publish Directory: `public`
 
-## Credenciales iniciales
+## Alternativa: Render Web Service
 
-Los usuarios se conservan como estaban en el index original.
+El mismo paquete puede ejecutarse como servicio Node:
 
-- Responsables y autorizadores: contraseña inicial `Volumetria2026`.
-- Administrador `edgar.montenegro`: contraseña inicial `Admin2026`.
+- Build Command: `npm run build`
+- Start Command: `npm start`
+- Health Check Path: `/health`
 
-Cada usuario debe entrar y usar el botón **Contraseña** para cambiarla antes de operar con información real.
+## GitHub Pages
 
-## Publicar en Render
+Como `index.html` también está en la raíz, puedes activar **Settings > Pages > Deploy from a branch**, seleccionar `main` y la carpeta `/ (root)`.
 
-El archivo `render.yaml` ya solicita un servicio Docker y un disco persistente en `/data`.
+## Importante sobre los datos
 
-1. Sube esta carpeta a un repositorio privado de GitHub.
-2. En Render selecciona **New → Blueprint**.
-3. Conecta el repositorio.
-4. Render detectará `render.yaml` y creará la aplicación con almacenamiento persistente.
-
-La URL pública utilizará HTTPS. No publiques la aplicación sin cambiar las contraseñas iniciales.
-
-## Publicar en Replit
-
-La carpeta incluye `.replit`. Importa el ZIP como proyecto Node.js y presiona **Run**. Para uso corporativo permanente, verifica que el despliegue tenga almacenamiento persistente para la carpeta `data`.
-
-## Archivos importantes
-
-- `public/index.html`: interfaz original adaptada al backend.
-- `server.js`: API, autenticación, permisos, base de datos y respaldos.
-- `data/estadistica-operativa.sqlite`: base de datos creada al iniciar.
-- `backups/`: respaldos automáticos locales.
-- `.env.example`: variables disponibles para producción.
-
-## Recomendaciones antes de usarla oficialmente
-
-- Cambiar todas las contraseñas iniciales.
-- Publicarla exclusivamente por HTTPS.
-- Usar un disco persistente y descargar respaldos periódicos.
-- Limitar el acceso mediante VPN, red corporativa o proveedor de identidad cuando TI lo requiera.
-- Realizar una prueba con una cuenta de cada rol antes de cargar datos oficiales.
+La aplicación guarda registros, usuarios y carga financiera en el navegador mediante almacenamiento local. Publicarla en Render hace accesible la interfaz, pero no convierte los datos en una base compartida entre computadoras. Las credenciales del prototipo están dentro del código del frontend y no equivalen a autenticación segura de producción.

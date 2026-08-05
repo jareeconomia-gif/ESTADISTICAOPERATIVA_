@@ -1,0 +1,27 @@
+RESPONSABLES / AUTORIZADORES
+Contraseña: Volumetria2026
+
+oscar.tapia
+carlos.montes
+mario.gonzalez
+generosa.suarez
+ivan.vargas
+eliseo.madrigal
+oscar.lanz
+candido.carmona
+david.corona
+
+DIRECTIVO
+Usuario: rene.rendon
+Contraseña: Volumetria2026
+Acceso: dashboard operativo y desempeño financiero
+
+ADMINISTRADOR MAESTRO
+Usuario: edgar.montenegro
+Contraseña: Admin2026
+Acceso: todos los módulos, carga financiera y administración de usuarios/permisos
+
+ADMINISTRADOR FINANCIERO
+Usuario: angel.finanzas
+Contraseña: Angel2026
+Acceso: cargar layout financiero y consultar dashboard financiero

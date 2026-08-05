@@ -1,14 +1,14 @@
 {
-  "name": "estadistica-operativa-productiva",
+  "name": "boag-dashboard",
   "version": "1.0.0",
   "private": true,
-  "description": "Aplicación multiusuario de Estadística Operativa con Node.js y SQLite",
-  "main": "server.js",
+  "description": "Dashboard BOAG listo para GitHub Pages y Render",
   "scripts": {
+    "build": "bash build.sh",
     "start": "node server.js",
     "check": "node --check server.js"
   },
   "engines": {
-    "node": ">=22.5.0"
+    "node": ">=18"
   }
 }

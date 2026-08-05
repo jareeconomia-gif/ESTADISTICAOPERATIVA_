@@ -1,0 +1,12 @@
+1) Descomprime BOAG_DASH_GITHUB_RENDER.zip.
+2) Sube a GitHub TODO el contenido interior de la carpeta, no el ZIP cerrado.
+3) En Render: New > Blueprint > conecta el repositorio > Apply.
+4) Render detectará render.yaml y publicará la carpeta public.
+
+Archivos que deben verse en la raíz de GitHub:
+- index.html
+- public/
+- render.yaml
+- build.sh
+- package.json
+- server.js

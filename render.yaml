@@ -1,17 +1,24 @@
 services:
   - type: web
-    name: estadistica-operativa
-    runtime: docker
-    plan: starter
-    healthCheckPath: /api/health
-    disk:
-      name: estadistica-data
-      mountPath: /data
-      sizeGB: 1
-    envVars:
-      - key: NODE_ENV
-        value: production
-      - key: DATA_DIR
-        value: /data
-      - key: BACKUP_DIR
-        value: /data/backups
+    runtime: static
+    name: boag-dashboard
+    buildCommand: bash build.sh
+    staticPublishPath: ./public
+    autoDeployTrigger: commit
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    headers:
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+      - path: /*
+        name: X-Frame-Options
+        value: SAMEORIGIN
+      - path: /index.html
+        name: Cache-Control
+        value: no-cache

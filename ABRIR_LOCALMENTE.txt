@@ -1,0 +1,17 @@
+INSTRUCCIONES PARA VER EL DASHBOARD LOCALMENTE
+
+1. Descomprime este paquete.
+2. Abre la carpeta Dashboard_Financiero_LOCAL_AJUSTADO.
+3. Da doble clic en index.html.
+4. Se abrirá en tu navegador.
+
+No necesitas Render, GitHub, Node.js ni instalar programas.
+
+Para cargar información financiera:
+- Inicia sesión con un usuario autorizado.
+- Entra al módulo financiero.
+- Selecciona "Subir layout financiero".
+- Elige tu archivo Excel.
+
+IMPORTANTE:
+La información se guarda localmente en el navegador de esa computadora.
